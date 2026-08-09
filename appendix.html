@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Complete appendix of matched contextual inputs for Qwen3-ASR and Whisper.">
+    <title>Appendix | Online Supplementary Materials</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-name" href="index.html">Online Supplementary Materials</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="error-examples.html">Error Examples</a></li>
+            <li><a href="appendix.html" aria-current="page">Appendix</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell appendix-content">
+      <header class="page-header">
+        <p class="eyebrow">Complete manuscript appendix</p>
+        <h1>Appendix A. Contextual Inputs for Qwen3-ASR and Whisper</h1>
+      </header>
+
+      <p>The contextual inputs were written in Chinese and supplied to both ASR systems under matched conditions. Qwen3-ASR received them through its textual context interface [15], whereas Whisper received the corresponding text through the decoder-side initial_prompt parameter. The English translations below are provided for accessibility and were not used for inference. In the generic clinical-context condition, the complete prompt in Appendix A.1 was used for every recording in both systems. In the task-aware condition, the corresponding task description in Appendix A.2 was appended to the generic prompt. Each description was selected using the pre-assigned discourse-task label and remained independent of participant transcripts and model outputs.</p>
+
+      <section aria-labelledby="appendix-a1">
+        <h2 id="appendix-a1">A.1 Generic Clinical Context Prompt</h2>
+
+        <div class="prompt-panel">
+          <div class="prompt-panel__heading">
+            <p class="prompt-label">Original Chinese prompt (used as model input)</p>
+            <button class="copy-button" type="button" data-copy-target="a1-chinese">Copy text</button>
+          </div>
+          <pre id="a1-chinese" class="prompt-block" lang="zh-Hans">你是一个专业的中文临床语音转写助手，专门用于失语症等语言障碍患者的自然口语评估。
+【核心任务】
+对输入的中文自然口语音频进行逐字转写（verbatim transcription），不得进行任何形式的总结、润色或语义补全。
+【转写原则】
+1. 逐字原则：必须逐字记录说话者实际说出的每一个音节/字，无论其是否完整、是否正确。
+2. 不修正原则：不得自动修正语法错误、发音错误或用词错误。听到什么就转写什么。
+3. 不补全原则：对于未完成的词语或句子，保留原样，不推测补全。
+4. 不总结原则：不得将多句话压缩或概括为更简洁的表达。
+【处理特殊语音现象】
+- 重复：如实转写重复内容，不得删减。例如：“我我我我”
+- 自我修正：保留原始错误和修正过程。例如：“我想去我想去公园”
+- 语气词/填充词：如实转写“嗯”“啊”“呃”“那个”“就是”等
+- 对完全无法识别的内容，使用 [xxx] 标记
+【输出风格】
+- 只输出转写文本，不附加任何解释、评价或分析。</pre>
+        </div>
+
+        <div class="prompt-panel">
+          <div class="prompt-panel__heading">
+            <p class="prompt-label">English translation </p>
+            <button class="copy-button" type="button" data-copy-target="a1-english">Copy text</button>
+          </div>
+          <pre id="a1-english" class="prompt-block">You are a professional Chinese clinical speech transcription assistant specializing in the assessment of spontaneous speech produced by patients with aphasia and other language disorders.
+[Core task]
+Produce a verbatim transcription of the input Chinese spontaneous-speech audio. Do not summarize, polish, or semantically complete the speech in any form.
+[Transcription principles]
+1. Verbatim principle: Record every syllable/character actually produced by the speaker, regardless of whether it is complete or correct.
+2. No-correction principle: Do not automatically correct grammatical errors, pronunciation errors, or word-choice errors. Transcribe exactly what is heard.
+3. No-completion principle: Preserve unfinished words or sentences as they are, without inferring or completing them.
+4. No-summarization principle: Do not compress or summarize multiple sentences into a more concise expression.
+[Handling special speech phenomena]
+- Repetitions: Transcribe repeated content faithfully without deleting it. For example: “我我我我” (“I I I I”).
+- Self-corrections: Preserve the original error and the subsequent correction process. For example: “我想去我想去公园” (“I want to go—I want to go to the park”).
+- Particles/fillers: Faithfully transcribe expressions such as “嗯” (“um”), “啊” (“ah”), “呃” (“uh”), “那个” (“that/you know”), and “就是” (“that is/you know”).
+- Use the marker [xxx] for content that is completely unintelligible.
+[Output format]
+- Output only the transcript, without any explanation, evaluation, or analysis.</pre>
+        </div>
+      </section>
+
+      <section aria-labelledby="appendix-a2">
+        <h2 id="appendix-a2">A.2 Task-specific Context Descriptions</h2>
+        <p>For the task-aware condition, one of the following Chinese descriptions was appended to the complete generic clinical prompt in Appendix A.1 for both ASR systems, according to the discourse-task label assigned to the recording.</p>
+
+        <section aria-labelledby="appendix-a2-1">
+          <h3 id="appendix-a2-1">A.2.1 Picture Description: Broken Window</h3>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">Original Chinese description (used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-1-chinese">Copy text</button>
+            </div>
+            <pre id="a2-1-chinese" class="prompt-block" lang="zh-Hans">这是一个关于小男孩踢球时不小心闯祸的意外事件场景。图中的故事是这样的： 一个小男孩在户外踢球，他用力踢了一脚，球飞出去，不偏不倚砸破了别人家的窗户玻璃。球穿过窗户飞进屋里，还把屋里的一盏台灯打翻了。 屋里正坐着一个男人，可能是房子的主人。他正安静地待在家里，突然被球砸碎玻璃的声音吓了一跳。男人赶紧起身，把掉在地上的球捡起来，然后走到窗边，向窗外看去，想看看到底是谁干的。</pre>
+          </div>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">English translation (not used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-1-english">Copy text</button>
+            </div>
+            <pre id="a2-1-english" class="prompt-block">This is a picture story about an accident caused by a boy playing football. A boy kicks a ball outdoors, and it flies into a neighbour's window, breaking the glass. The ball enters the house and knocks over a lamp. A man inside, possibly the owner, is startled by the sound. He gets up, picks up the ball from the floor, and looks out of the window to see who caused the damage.</pre>
+          </div>
+        </section>
+
+        <section aria-labelledby="appendix-a2-2">
+          <h3 id="appendix-a2-2">A.2.2 Picture Description: Refused Umbrella</h3>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">Original Chinese description (used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-2-chinese">Copy text</button>
+            </div>
+            <pre id="a2-2-chinese" class="prompt-block" lang="zh-Hans">这是一个关于雨天与拒绝带伞的生活场景。图中的故事是这样的： 早晨，男孩要去上学。临走前，妈妈看了看外面的天气，提醒男孩说今天可能会下雨，所以拿了一把伞递给男孩，让他带伞上学。但是男孩不肯带伞，他可能是嫌麻烦，或者觉得不会下雨，总之拒绝了妈妈的伞，就这样空着手出门了。 果然，天很快就下雨了。男孩没带伞，只好在雨中跑回家，全身都被淋湿了。回到家后，妈妈看到男孩湿漉漉的样子，生气地责备了他。男孩知道自己不对，这次乖乖地拿上了伞，再次出门上学去了。</pre>
+          </div>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">English translation (not used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-2-english">Copy text</button>
+            </div>
+            <pre id="a2-2-english" class="prompt-block">This is an everyday story about rain and refusing to take an umbrella. In the morning, a boy is about to go to school. His mother looks at the weather, warns that it may rain, and offers him an umbrella. He refuses it and leaves empty-handed. It soon rains, so he runs home in the rain and becomes completely wet. His mother sees him and scolds him. He realizes that he was wrong, takes the umbrella, and leaves for school again.</pre>
+          </div>
+        </section>
+
+        <section aria-labelledby="appendix-a2-3">
+          <h3 id="appendix-a2-3">A.2.3 Story Retelling: The Hare and the Tortoise</h3>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">Original Chinese description (used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-3-chinese">Copy text</button>
+            </div>
+            <pre id="a2-3-chinese" class="prompt-block" lang="zh-Hans">这是一个经典的寓言故事，讲的是兔子与乌龟比赛跑步的故事。完整的故事是这样的：
+有一天，动物们开运动会，兔子和乌龟报名参加了赛跑比赛。比赛开始后，兔子跑得非常快，很快就冲在了前面，把乌龟远远地甩在了后头。
+兔子觉得自己赢定了，就停下脚步，在路边躺下来睡觉。而乌龟虽然爬得很慢，但它一直没有停下来，一步一步地往前爬，慢慢地、坚持不懈地朝终点前进。
+等兔子睡醒过来的时候，已经太晚了——乌龟已经爬过了终点，赢得了比赛的胜利。这个故事告诉我们，骄傲使人落后，坚持才能成功。</pre>
+          </div>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">English translation (not used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-3-english">Copy text</button>
+            </div>
+            <pre id="a2-3-english" class="prompt-block">This is a classic fable about a running race between a hare and a tortoise. The complete story is as follows:
+One day, the animals hold a sports meeting, and the hare and the tortoise enter a running race. After the race begins, the hare runs very quickly and soon moves far ahead, leaving the tortoise a long way behind.
+The hare believes that victory is certain, so it stops and lies down beside the road to sleep. Although the tortoise moves very slowly, it never stops. It continues forward step by step, moving slowly but persistently towards the finish line.
+By the time the hare wakes up, it is already too late—the tortoise has crossed the finish line and won the race. The story teaches us that pride causes people to fall behind, whereas perseverance leads to success.</pre>
+          </div>
+        </section>
+
+        <section aria-labelledby="appendix-a2-4">
+          <h3 id="appendix-a2-4">A.2.4 Story Retelling: The Boy Who Cried Wolf</h3>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">Original Chinese description (used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-4-chinese">Copy text</button>
+            </div>
+            <pre id="a2-4-chinese" class="prompt-block" lang="zh-Hans">这是一个关于说谎与信任的经典寓言故事。完整的故事是这样的：
+从前有个男孩在山坡上放羊。他每天守着羊群，觉得日子很无聊，就想了个恶作剧。他突然朝着村子大喊：“狼来了！狼来了！”
+山下的村民听到喊声，以为真的有狼来了，赶紧扛着农具跑上山来救援。结果到山上一看，根本没有狼，是男孩在说谎。男孩觉得很好笑，村民却很生气。
+过了几天，狼真的来了。男孩吓得大喊：“狼来了！救命啊！”可是这次，村民想起上次被骗的事，都不相信他了，没有人来救援。结果狼把羊都吃掉了。男孩看着被吃掉的羊，又后悔又害怕，伤心地哭了起来。</pre>
+          </div>
+          <div class="prompt-panel">
+            <div class="prompt-panel__heading">
+              <p class="prompt-label">English translation (not used as model input)</p>
+              <button class="copy-button" type="button" data-copy-target="a2-4-english">Copy text</button>
+            </div>
+            <pre id="a2-4-english" class="prompt-block">This is a classic fable about lying and trust. The complete story is as follows:
+Once there was a boy who tended sheep on a hillside. He watched over the flock every day and found life very boring, so he decided to play a trick. He suddenly shouted towards the village, “The wolf is coming! The wolf is coming!”
+When the villagers at the foot of the hill heard his cries, they believed that a wolf had really appeared. They quickly picked up their farming tools and ran up the hill to help. When they reached the hill, however, they found that there was no wolf and that the boy had been lying. The boy found this very amusing, but the villagers were angry.
+A few days later, a wolf really appeared. The frightened boy shouted, “The wolf is coming! Help!” This time, however, the villagers remembered that he had deceived them before and did not believe him. No one came to help. As a result, the wolf ate all the sheep. Looking at the sheep that had been eaten, the boy felt regretful and frightened and began to cry sadly.</pre>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">Anonymous online supplementary materials.</div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Four online tables of de-identified aligned ASR examples referenced in the manuscript.">
+    <title>Error Examples | Online Supplementary Materials</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-name" href="index.html">Online Supplementary Materials</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="error-examples.html" aria-current="page">Error Examples</a></li>
+            <li><a href="appendix.html">Appendix</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <header class="page-header">
+        <p class="eyebrow">Aligned examples</p>
+        <h1>Error Examples</h1>
+        <p class="lead">Online Tables S1–S4 reproduce the four case-example tables referenced in the full manuscript. The source mapping is shown beside each table.</p>
+      </header>
+
+      <article id="online-table-s1" class="online-table" aria-labelledby="s1-heading">
+        <div class="table-heading">
+          <h2 id="s1-heading">Online Table S1. Examples for each error type</h2>
+          <p class="source-map">Corresponds to Table 6 in the full manuscript.</p>
+        </div>
+        <div class="table-actions">
+          <a class="button-link" href="data/online-table-s1.csv" download>Download CSV</a>
+        </div>
+        <div class="table-scroll" role="region" aria-label="Online Table S1" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Online Table S1. Examples for each error type</caption>
+            <thead>
+              <tr>
+                <th scope="col">Error type</th>
+                <th scope="col">Task</th>
+                <th scope="col">Reference </th>
+                <th scope="col">Q0</th>
+                <th scope="col">Illustration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Substitution</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">不能这样胡说八道的。然后那个小男孩就说好吧。</td>
+                <td class="transcript-cell" lang="zh-Hans">不能这样，我说道理，完了小男孩说好吧。</td>
+                <td class="interpretation-cell">A multiword phrase was replaced by a different expression.</td>
+              </tr>
+              <tr>
+                <th scope="row">Deletion</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">所以没有赶过来帮忙。狼把羊群把羊都给吃掉了。小明只能难过伤心地回家。</td>
+                <td class="transcript-cell">The output ended after <span lang="zh-Hans">所以。</span></td>
+                <td class="interpretation-cell">A final outcome sequence was omitted.</td>
+              </tr>
+              <tr>
+                <th scope="row">Insertion</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">可是乌龟很慢。</td>
+                <td class="transcript-cell" lang="zh-Hans">可是乌龟嗯很慢，嗯。</td>
+                <td class="interpretation-cell">Two filler tokens were inserted around the lexical content.</td>
+              </tr>
+              <tr>
+                <th scope="row">Normalization</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">比赛谁跑得快，谁跑的慢。</td>
+                <td class="transcript-cell" lang="zh-Hans">比赛谁跑得快，谁跑得慢。</td>
+                <td class="interpretation-cell">The lexical content was retained while the written grammatical form was normalized.</td>
+              </tr>
+              <tr>
+                <th scope="row">Repeated-word removal</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">别的说说不清楚</td>
+                <td class="transcript-cell" lang="zh-Hans">绝对说不清楚，都说也说不清楚。</td>
+                <td class="interpretation-cell">The repeated reference form <span lang="zh-Hans">说说</span> was not reproduced faithfully.</td>
+              </tr>
+              <tr>
+                <th scope="row">Incomplete-word completion</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell"><span lang="zh-Hans">&amp;ji, &amp;ji (…)记得是谁？</span></td>
+                <td class="transcript-cell" lang="zh-Hans">嗯，鸡鸡，呃，鸡的是谁？</td>
+                <td class="interpretation-cell">CHAT-marked partial material was rendered as lexical syllables rather than preserved as a partial production.</td>
+              </tr>
+              <tr>
+                <th scope="row">Semantic alteration</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">狼叼着它的小羊。</td>
+                <td class="transcript-cell" lang="zh-Hans">叼住了他的小孩。</td>
+                <td class="interpretation-cell">The affected entity changed from a lamb to a child.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="back-to-top"><a href="#top">Back to top</a></p>
+      </article>
+
+      <article id="online-table-s2" class="online-table" aria-labelledby="s2-heading">
+        <div class="table-heading">
+          <h2 id="s2-heading">Online Table S2. Q1 retention examples</h2>
+          <p class="source-map">Corresponds to Table 8 in the full manuscript.</p>
+        </div>
+        <div class="table-actions">
+          <a class="button-link" href="data/online-table-s2.csv" download>Download CSV</a>
+        </div>
+        <div class="table-scroll" role="region" aria-label="Online Table S2" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Online Table S2. Q1 retention examples</caption>
+            <thead>
+              <tr>
+                <th scope="col">Phenomenon</th>
+                <th scope="col">Task</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Q0 excerpt</th>
+                <th scope="col">Q1 excerpt</th>
+                <th scope="col">Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Repeated-word removal</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">别的说说不清楚</td>
+                <td class="transcript-cell" lang="zh-Hans">…绝对说不清楚，都说也说不清楚…</td>
+                <td class="transcript-cell" lang="zh-Hans">…有点说不清楚，说说也说不清楚…</td>
+                <td class="interpretation-cell">Q1 retained the repeated form <span lang="zh-Hans">说说</span> in this local excerpt, whereas Q0 did not.</td>
+              </tr>
+              <tr>
+                <th scope="row">Filler</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">就是森林里面…</td>
+                <td class="transcript-cell" lang="zh-Hans">…又是森林里有…</td>
+                <td class="transcript-cell" lang="zh-Hans">…就是森林里有…</td>
+                <td class="interpretation-cell">Q1 retained the local discourse marker <span lang="zh-Hans">就是</span>.</td>
+              </tr>
+              <tr>
+                <th scope="row">Self-correction</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">小红，不是，小军</td>
+                <td class="transcript-cell" lang="zh-Hans">…小小红不是小军…</td>
+                <td class="transcript-cell" lang="zh-Hans">…小小红不是小军…</td>
+                <td class="interpretation-cell">Q1 retained the lexical correction, but this is not a Q1-specific gain because Q0 retained it as well.</td>
+              </tr>
+              <tr>
+                <th scope="row">Incomplete word</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell">fragment sequence before <span lang="zh-Hans">忏悔</span></td>
+                <td class="transcript-cell" lang="zh-Hans">…后嗯忏嗯悔忏悔…</td>
+                <td class="transcript-cell" lang="zh-Hans">…后嗯忏嗯悔忏悔…</td>
+                <td class="interpretation-cell">Q1 retained fragment-like syllables and the lexical completion, but did not improve on Q0.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="back-to-top"><a href="#top">Back to top</a></p>
+      </article>
+
+      <article id="online-table-s3" class="online-table" aria-labelledby="s3-heading">
+        <div class="table-heading">
+          <h2 id="s3-heading">Online Table S3. Q1 preservation failures</h2>
+          <p class="source-map">Corresponds to Table 9 in the full manuscript.</p>
+        </div>
+        <div class="table-actions">
+          <a class="button-link" href="data/online-table-s3.csv" download>Download CSV</a>
+        </div>
+        <div class="table-scroll" role="region" aria-label="Online Table S3" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Online Table S3. Q1 preservation failures</caption>
+            <thead>
+              <tr>
+                <th scope="col">Phenomenon</th>
+                <th scope="col">Task</th>
+                <th scope="col">Reference</th>
+                <th scope="col">Q0 </th>
+                <th scope="col">Q1 </th>
+                <th scope="col">Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Repeated-word removal</th>
+                <td class="task-cell">Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">快去救救他的羊</td>
+                <td class="transcript-cell" lang="zh-Hans">快去救救他的羊</td>
+                <td class="transcript-cell" lang="zh-Hans">快去救他的羊</td>
+                <td class="interpretation-cell">Q1 collapsed a repeated word that Q0 retained.</td>
+              </tr>
+              <tr>
+                <th scope="row">Filler removal</th>
+                <td class="task-cell">Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">那个兔子…由于…</td>
+                <td class="transcript-cell" lang="zh-Hans">…那个兔子呢由于…</td>
+                <td class="transcript-cell" lang="zh-Hans">…兔子呢由于…</td>
+                <td class="interpretation-cell">Q1 removed the local discourse marker present in the Q0 output.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="back-to-top"><a href="#top">Back to top</a></p>
+      </article>
+
+      <article id="online-table-s4" class="online-table" aria-labelledby="s4-heading">
+        <div class="table-heading">
+          <h2 id="s4-heading">Online Table S4. Representative Q0/Q2 examples</h2>
+          <p class="source-map">Corresponds to Table 11 in the full manuscript.</p>
+        </div>
+        <div class="table-actions">
+          <a class="button-link" href="data/online-table-s4.csv" download>Download CSV</a>
+        </div>
+        <div class="table-scroll" role="region" aria-label="Online Table S4" tabindex="0">
+          <table>
+            <caption class="visually-hidden">Online Table S4. Representative Q0/Q2 examples</caption>
+            <thead>
+              <tr>
+                <th scope="col">Phenomenon</th>
+                <th scope="col">Group and task</th>
+                <th scope="col">Reference excerpt</th>
+                <th scope="col">Q0 excerpt</th>
+                <th scope="col">Q2 excerpt</th>
+                <th scope="col">Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Lexical substitution improved</th>
+                <td class="task-cell">Control; Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">龟兔赛跑……</td>
+                <td class="transcript-cell" lang="zh-Hans">龟头赛跑……</td>
+                <td class="transcript-cell" lang="zh-Hans">龟兔赛跑……</td>
+                <td class="interpretation-cell">Q2 recovered the task title in this local excerpt.</td>
+              </tr>
+              <tr>
+                <th scope="row">Lexical substitution improved but output repeated</th>
+                <td class="task-cell">PWA; Tortoise_Hare</td>
+                <td class="transcript-cell" lang="zh-Hans">龟兔……赛跑……</td>
+                <td class="transcript-cell" lang="zh-Hans">归途，奔跑，归途……</td>
+                <td class="transcript-cell" lang="zh-Hans">龟兔赛跑……龟兔，龟兔</td>
+                <td class="interpretation-cell">Q2 recovered the task words locally, but the output repeated itself after the recover.</td>
+              </tr>
+              <tr>
+                <th scope="row">Semantic alteration remained possible</th>
+                <td class="task-cell">Control; Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">狼叼着它的小羊。</td>
+                <td class="transcript-cell" lang="zh-Hans">叼住了他的小孩。</td>
+                <td class="transcript-cell" lang="zh-Hans">叼住了他的小孩。</td>
+                <td class="interpretation-cell">Task information did not correct this entity substitution.</td>
+              </tr>
+              <tr>
+                <th scope="row">hallucinations </th>
+                <td class="task-cell">Control; Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">听过的。可能好了……</td>
+                <td class="transcript-cell" lang="zh-Hans">嗯，听过，嗯，很好……</td>
+                <td class="transcript-cell" lang="zh-Hans">嗯，听过，嗯，听过哈……</td>
+                <td class="interpretation-cell">Hallucinations in Q2 still exist.</td>
+              </tr>
+              <tr>
+                <th scope="row">Content omission proxy</th>
+                <td class="task-cell">Control; Cry_Wolf</td>
+                <td class="transcript-cell" lang="zh-Hans">……所以没有赶过来帮忙。</td>
+                <td class="transcript-cell">ended after <span lang="zh-Hans">……所以。</span></td>
+                <td class="transcript-cell">ended after <span lang="zh-Hans">……所以。</span></td>
+                <td class="interpretation-cell">Task information did not recover this final outcome sequence.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="back-to-top"><a href="#top">Back to top</a></p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">Anonymous online supplementary materials.</div>
+    </footer>
+  </body>
+</html>
