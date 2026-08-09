@@ -9,7 +9,7 @@ It publishes four aligned-example tables and the complete appendix. All quantita
 The mapping below follows the latest manuscript source:
 
 | Online table | Caption |
-| --- | --- | --- |
+| --- | --- |
 | Online Table S1 | Examples for each error type |
 | Online Table S2 | Q1 retention examples |
 | Online Table S3 | Q1 preservation failures |
