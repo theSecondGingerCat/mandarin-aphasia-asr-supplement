@@ -8,12 +8,12 @@ It publishes four aligned-example tables and the complete appendix. All quantita
 
 The mapping below follows the latest manuscript source:
 
-| Online table | Full manuscript table | Caption |
+| Online table | Caption |
 | --- | --- | --- |
-| Online Table S1 | Table 6 | Examples for each error type |
-| Online Table S2 | Table 8 | Q1 retention examples |
-| Online Table S3 | Table 9 | Q1 preservation failures |
-| Online Table S4 | Table 11 | Representative Q0/Q2 examples |
+| Online Table S1 | Examples for each error type |
+| Online Table S2 | Q1 retention examples |
+| Online Table S3 | Q1 preservation failures |
+| Online Table S4 | Representative Q0/Q2 examples |
 
 ## Repository structure
 
