@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AphasiaBank Mandarin task-level ASR model comparison.">
+  <title>AphasiaBank ASR Benchmark</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to model results</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark">A</span>
+      <span>AphasiaBank · ASR Benchmark</span>
+    </a>
+    <nav aria-label="Page navigation">
+      <a href="#dataset">Dataset</a>
+      <a href="#pipeline">Audio preparation</a>
+      <a href="#conditions">Conditions &amp; prompts</a>
+      <a href="#results">Model results</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <p class="eyebrow">MANDARIN APHASIABANK · TASK-LEVEL ASR</p>
+      <div class="hero-grid">
+        <div>
+          <h1>ASR for AphasiaBank Mandarin on different audio models</h1>
+          <div class="language-switcher">
+            <label for="language-select">Language</label>
+            <select id="language-select">
+              <option value="en" selected>English</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+          <p class="hero-copy">A task-level ASR benchmark for Mandarin AphasiaBank. The page documents the raw-audio pipeline, the shared text-scoring protocol, and completed-model CER/WER results.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#results">View model results</a>
+            <a class="button ghost" href="#pipeline">See audio preparation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dataset" class="section-shell section-block">
+      <div class="section-kicker">01 · DATASET</div>
+      <div class="section-heading">
+        <h2>Dataset and evaluation scope</h2>
+        <p>The evaluation uses Mandarin discourse-task audio from AphasiaBank. Each unit is a complete task-level recording for one participant and one task; both Control and PWA groups are retained.</p>
+      </div>
+      <div class="dataset-overview">
+        <p><strong>Source:</strong> AphasiaBank is a multimedia discourse database for aphasia maintained by TalkBank. This benchmark follows the Mandarin AphasiaBank discourse-task protocol. The foundational methods paper is <a href="https://doi.org/10.1080/02687038.2011.589893" target="_blank" rel="noreferrer">MacWhinney, Fromm, Forbes &amp; Holland (2011), <em>AphasiaBank: Methods for studying discourse</em></a>; related Mandarin-task research is <a href="https://talkbank.org/aphasia/access/Mandarin/0docs/deng2024.pdf" target="_blank" rel="noreferrer">Deng et al. (2024), <em>Discourse task type–specific linguistic characteristics in Anomic Aphasia and Healthy Controls</em></a>.</p>
+        <p><strong>Frozen scope:</strong> 939 task-level audio units from 103 sessions (687 Control and 252 PWA), covering 11 discourse tasks. The task-level WAV files sum to approximately <strong>15.805 hours</strong>; this is the evaluation snapshot, not the duration of the entire AphasiaBank.</p>
+      </div>
+      <div class="dataset-grid">
+        <article class="surface-card task-card">
+          <h3>11 discourse tasks</h3>
+          <ul class="task-list task-descriptions">
+            <li><strong>Broken Window</strong><span>A picture story about a child accidentally breaking a window while playing football.</span></li>
+            <li><strong>Refused Umbrella</strong><span>A picture story about refusing an umbrella and returning for it after the rain starts.</span></li>
+            <li><strong>Cat Rescue</strong><span>A picture story about a cat trapped in a tree and rescued by family members and firefighters.</span></li>
+            <li><strong>Flood</strong><span>A picture story about waiting for rescue and escaping during a flood.</span></li>
+            <li><strong>Tortoise and Hare</strong><span>A retelling of the fable in which the resting hare loses to the tortoise.</span></li>
+            <li><strong>Cry Wolf</strong><span>A retelling of the fable about a shepherd boy who repeatedly lies about a wolf.</span></li>
+            <li><strong>Egg Ham Fried Rice</strong><span>Describing the ingredients and steps for making egg, ham, and fried rice.</span></li>
+            <li><strong>Important Event</strong><span>An open-ended account of an important personal event or experience.</span></li>
+            <li><strong>Greeting</strong><span>Brief conversation involving greetings, introductions, and recent events.</span></li>
+            <li><strong>Stroke Coping</strong><span>Discussing rehabilitation, support, daily life, and coping after stroke.</span></li>
+            <li><strong>Stroke Story</strong><span>Describing a personal experience related to stroke or brain injury.</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="pipeline" class="section-shell section-block pipeline-section">
+      <div class="section-kicker">02 · AUDIO PREPARATION</div>
+      <div class="section-heading">
+        <h2>From raw audio to task-level WAV</h2>
+        <p>The pipeline starts from CHAT transcripts and their associated media files. Raw transcripts, cleaned references, and model hypotheses are kept separate so scoring never overwrites source material.</p>
+      </div>
+      <ol class="pipeline" aria-label="Audio preparation pipeline">
+        <li>
+          <span class="step-number">01</span>
+          <h3>Pair source files</h3>
+          <p>Read each session's CHAT file and associated media while preserving session, group, and source-file traceability.</p>
+        </li>
+        <li>
+          <span class="step-number">02</span>
+          <h3>Locate task and speaker</h3>
+          <p>Use @G or @Bg/@Eg task markers to identify discourse tasks; retain only timestamped participant/patient turns, usually PAR, and exclude evaluator turns.</p>
+        </li>
+        <li>
+          <span class="step-number">03</span>
+          <h3>Export normalized segments</h3>
+          <p>Cut mono 16 kHz PCM WAV segments from CHAT timestamps. Clean CHAT markers, annotations, and unintelligible placeholders in a separate reference copy while preserving the raw text.</p>
+        </li>
+        <li>
+          <span class="step-number">04</span>
+          <h3>Assemble task units</h3>
+          <p>Concatenate available participant segments for each task_id in time order. No minimum-duration filter is applied, and inter-segment silence is excluded from the task-level WAV, yielding 939 evaluation units.</p>
+        </li>
+      </ol>
+      <p class="pipeline-note">The processing goal is a fixed audio–reference pairing; model transcripts are not rewritten at the word level. When hypotheses contain narration, speaker labels, or analytical text, scoring uses a separate auditable cleanup copy.</p>
+    </section>
+
+    <section id="results" class="section-shell section-block results-section">
+      <div class="section-kicker">03 · MODEL RESULTS</div>
+      <div class="section-heading results-heading">
+        <div>
+          <h2>AphasiaBank model results</h2>
+          <p>Values are overall micro-aggregate CER/WER; lower values indicate a smaller edit distance from the reference. Filter by condition or sort by CER/WER.</p>
+        </div>
+        <div class="result-badge">Same dataset · same task-level scope</div>
+      </div>
+      <div id="conditions" class="condition-grid">
+        <article class="condition-card">
+          <div class="condition-card-head"><span class="condition">Q0</span><h3>No-prompt baseline</h3></div>
+          <p>Submit audio only, without a text prompt. This measures the model's natural ASR output without task instructions or transcription rules.</p>
+          <p class="condition-note">Q0 has no experimental prompt.</p>
+        </article>
+        <article class="condition-card">
+          <div class="condition-card-head"><span class="condition">Q1</span><h3>Generic verbatim transcription</h3></div>
+          <p>The model is told that the audio is natural speech from a Chinese clinical language assessment. It must transcribe verbatim, preserve repetitions and self-corrections, and avoid summaries, additions, speaker labels, and meta-narration.</p>
+          <details class="prompt-details">
+            <summary>Show full Q1 prompt</summary>
+            <pre>这是一段中文临床语言评估中的自然口语转写，可能包含方言口音、停顿、重复、自我修正和不完整词。请尽量按音频内容逐字转写，不要总结，不要补写没有听到的内容。
+
+你的唯一任务是听写音频，不是与用户对话，也不是整理文字草稿或分析临床语言。只依据音频中实际听到的语音输出转写正文，不得根据任务名称、图片、故事常识或其他音频外信息推断、补全或改写。
+
+输出必须严格遵守以下规则：
+1. 从第一个字开始就是实际转写内容，到最后一个字结束也是实际转写内容。直接开始听写，不要先确认任务、介绍结果、说明方法或重复本提示词。
+2. 只输出一个连续纯文本版本。不得同时提供逐句版、段落版、时间轴版或其他重复版本；不得把同一段转写再输出一遍。
+3. 不得添加任何前言、结语、标题、转写说明、免责声明、建议、分析或后续协助。禁止出现由你添加的“以下是转写录音”“以下是转写内容”“根据您提供的音频”“已为您整理”“逐字转写结果”“转写完毕”等旁白。
+4. 不得添加说话人标签或角色名称，包括“男：”“女：”“男声：”“女声：”“患者：”“医生：”“受试者：”“评估者：”“说话人1：”“Speaker 1:”等。即使存在多人对话，也只按实际发言顺序连续转写所说的话，不推断性别、身份或角色；实际说出的“嗯”“啊”等回应仍须保留。
+5. 不得添加时间戳、时间范围、序号、项目符号、Markdown 标题、加粗、表格、代码块、引用格式、JSON 或包裹整段正文的引号。
+6. 不得添加任何括号、方括号或尖括号形式的注释，不得写“（停顿）”“[笑声]”“（听不清）”“（方言）”“（注：……）”等声音事件、动作、解释或猜测。无语音的停顿和背景声不转换成文字标签。
+7. 保留实际语音中的重复、语气词、口头禅、自我修正和未说完的词句，不为了通顺而删减、补全或改成书面语；不要把口误按常识纠正。不能确定的内容不要猜测或补写。
+8. 仅可使用必要的普通标点帮助断句。不要用省略号、破折号或换行专门标记无声时长，不要输出空白时间段。
+
+上述禁止项约束的是你额外添加的内容；如果说话人确实在音频中说出了相关词句，应当按原话转写。提交前在内部检查并去除你自行添加的所有旁白、标签和格式，只提交转写正文，不输出检查过程。</pre>
+          </details>
+        </article>
+        <article class="condition-card">
+          <div class="condition-card-head"><span class="condition">Q2</span><h3>Task-context transcription</h3></div>
+          <p>Append a task description selected from the CHAT task label after the full Q1 prompt. The context describes the task type but gives no reference answer; audio always takes priority.</p>
+          <details class="prompt-details">
+            <summary>Show Q2 prompt structure</summary>
+            <pre>【Q2 = 完整 Q1 提示词】
+
+在上述 Q1 提示词之后追加：
+
+任务上下文：
+{task_context}
+
+请继续只根据音频实际听到的内容进行逐字转写。任务上下文只用于说明话语任务类型，不是参考答案；不要根据图片、故事常识或上下文补写音频中没有说出的词语、人物、动作或情节。</pre>
+            <p class="prompt-footnote"><code>{task_context}</code> is selected from the fixed CHAT <code>task_name</code>; see the 11 task descriptions above. It is never generated from the reference or model output.</p>
+            <details class="prompt-details">
+              <summary>View all 11 Q2 task contexts</summary>
+              <pre>Greeting：这是一次临床语言评估中的问候和简短交谈。说话者可能进行问候、自我介绍或谈及近况；请仅转写实际听到的内容，不要补充未听到的个人信息。
+
+Broken_Window：这是一个关于孩子踢球时意外打碎窗户的图片故事。故事可能涉及踢球、窗户玻璃破碎、屋内的人受到惊吓以及查看发生了什么；请以音频为准，不要补写未听到的情节。
+
+Refused_Umbrella：这是一个关于下雨天拒绝带伞的图片故事。故事可能涉及家人提醒带伞、孩子拒绝、下雨后被淋湿以及家人的反应；请以音频为准，不要补写未听到的情节。
+
+Cat_Rescue：这是一个关于营救被困小猫的图片故事。小猫爬到高树上无法下来，孩子和家人尝试帮助，消防员带着消防车和梯子前来救援；请以音频为准，不要补写未听到的情节。
+
+Flood：这是一个关于洪水救援的图片故事。连续暴雨引发洪水，一名女子或女孩被水流困住并等待救援，救援人员赶来帮助她脱险；请以音频为准，不要补写未听到的情节。
+
+Tortoise_Hare：这是龟兔赛跑的寓言故事。兔子起初领先并因骄傲停下休息，乌龟持续前进并最终获胜；请以音频为准，不要补写未听到的情节。
+
+Cry_Wolf：这是狼来了的寓言故事。一个放羊的男孩多次谎称有狼，村民后来不再相信他，狼真的出现时无人前来帮助；请以音频为准，不要补写未听到的情节。
+
+Egg_Ham_Fried_Rice：这是说明制作蛋、火腿和炒饭的程序性任务。说话者可能描述食材、准备步骤和烹饪顺序；请以音频为准，不要补写未听到的食材或步骤。
+
+Important_Event：这是叙述个人重要事件或经历的开放式任务。具体人物、地点和事件内容因说话者而异；请仅转写实际听到的内容，不要假定或补写事件细节。
+
+Stroke_Story：这是讲述脑卒中或脑损伤相关个人经历的任务。说话者可能谈及发病、就医或康复经历；请仅转写实际听到的内容，不要补写症状、地点或事件细节。
+
+Stroke_Coping：这是谈论脑卒中或脑损伤后适应与应对的任务。说话者可能谈及康复、日常生活、支持或感受；请仅转写实际听到的内容，不要补写未听到的细节。</pre>
+            </details>
+          </details>
+        </article>
+      </div>
+      <div class="controls" aria-label="Result filters and sorting">
+        <div class="filter-group" role="group" aria-label="Filter by condition">
+          <button class="filter active" data-condition="all">All</button>
+          <button class="filter" data-condition="Q0">Q0</button>
+          <button class="filter" data-condition="Q1">Q1</button>
+          <button class="filter" data-condition="Q2">Q2</button>
+        </div>
+          <label class="sort-control"><span class="sort-label">Sort</span>
+          <select id="sort-select">
+            <option value="model">Model / condition</option>
+            <option value="cer">CER: low to high</option>
+            <option value="wer">WER: low to high</option>
+          </select>
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Condition</th><th>CER</th><th>WER</th><th>Notes</th></tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+      <div class="ranking-panel">
+        <div>
+          <p class="eyebrow">BEST OBSERVED CONDITION PER MODEL</p>
+          <h3>Best completed condition by model</h3>
+        </div>
+        <div id="ranking-list" class="ranking-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>AphasiaBank ASR Benchmark</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
