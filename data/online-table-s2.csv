@@ -1,0 +1,5 @@
+"Phenomenon","Task","Reference","Q0 excerpt","Q1 excerpt","Interpretation"
+"Repeated-word removal","Tortoise_Hare","别的说说不清楚","…绝对说不清楚，都说也说不清楚…","…有点说不清楚，说说也说不清楚…","Q1 retained the repeated form 说说 in this local excerpt, whereas Q0 did not."
+"Filler","Tortoise_Hare","就是森林里面…","…又是森林里有…","…就是森林里有…","Q1 retained the local discourse marker 就是."
+"Self-correction","Cry_Wolf","小红，不是，小军","…小小红不是小军…","…小小红不是小军…","Q1 retained the lexical correction, but this is not a Q1-specific gain because Q0 retained it as well."
+"Incomplete word","Cry_Wolf","fragment sequence before 忏悔","…后嗯忏嗯悔忏悔…","…后嗯忏嗯悔忏悔…","Q1 retained fragment-like syllables and the lexical completion, but did not improve on Q0."

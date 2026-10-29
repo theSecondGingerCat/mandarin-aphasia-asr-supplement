@@ -1,0 +1,6 @@
+"Phenomenon","Group and task","Reference excerpt","Q0 excerpt","Q2 excerpt","Interpretation"
+"Lexical substitution improved","Control; Tortoise_Hare","龟兔赛跑……","龟头赛跑……","龟兔赛跑……","Q2 recovered the task title in this local excerpt."
+"Lexical substitution improved but output repeated","PWA; Tortoise_Hare","龟兔……赛跑……","归途，奔跑，归途……","龟兔赛跑……龟兔，龟兔","Q2 recovered the task words locally, but the output repeated itself after the recover."
+"Semantic alteration remained possible","Control; Cry_Wolf","狼叼着它的小羊。","叼住了他的小孩。","叼住了他的小孩。","Task information did not correct this entity substitution."
+"hallucinations ","Control; Cry_Wolf","听过的。可能好了……","嗯，听过，嗯，很好……","嗯，听过，嗯，听过哈……","Hallucinations in Q2 still exist."
+"Content omission proxy","Control; Cry_Wolf","……所以没有赶过来帮忙。","ended after ……所以。","ended after ……所以。","Task information did not recover this final outcome sequence."

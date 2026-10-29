@@ -1,0 +1,13 @@
+*.docx
+*.docm
+*.pdf
+*.wav
+*.mp3
+*.flac
+*.cha
+source/
+raw/
+private/
+*.tmp
+Thumbs.db
+.DS_Store

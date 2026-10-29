@@ -1,0 +1,8 @@
+"Error type","Task","Reference ","Q0","Illustration"
+"Substitution","Cry_Wolf","不能这样胡说八道的。然后那个小男孩就说好吧。","不能这样，我说道理，完了小男孩说好吧。","A multiword phrase was replaced by a different expression."
+"Deletion","Cry_Wolf","所以没有赶过来帮忙。狼把羊群把羊都给吃掉了。小明只能难过伤心地回家。","The output ended after 所以。","A final outcome sequence was omitted."
+"Insertion","Tortoise_Hare","可是乌龟很慢。","可是乌龟嗯很慢，嗯。","Two filler tokens were inserted around the lexical content."
+"Normalization","Tortoise_Hare","比赛谁跑得快，谁跑的慢。","比赛谁跑得快，谁跑得慢。","The lexical content was retained while the written grammatical form was normalized."
+"Repeated-word removal","Tortoise_Hare","别的说说不清楚","绝对说不清楚，都说也说不清楚。","The repeated reference form 说说 was not reproduced faithfully."
+"Incomplete-word completion","Cry_Wolf","&ji, &ji (…)记得是谁？","嗯，鸡鸡，呃，鸡的是谁？","CHAT-marked partial material was rendered as lexical syllables rather than preserved as a partial production."
+"Semantic alteration","Cry_Wolf","狼叼着它的小羊。","叼住了他的小孩。","The affected entity changed from a lamb to a child."

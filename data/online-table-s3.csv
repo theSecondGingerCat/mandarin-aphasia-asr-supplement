@@ -1,0 +1,3 @@
+"Phenomenon","Task","Reference","Q0 ","Q1 ","Interpretation"
+"Repeated-word removal","Cry_Wolf","快去救救他的羊","快去救救他的羊","快去救他的羊","Q1 collapsed a repeated word that Q0 retained."
+"Filler removal","Tortoise_Hare","那个兔子…由于…","…那个兔子呢由于…","…兔子呢由于…","Q1 removed the local discourse marker present in the Q0 output."
